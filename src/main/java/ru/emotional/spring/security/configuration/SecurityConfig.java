@@ -7,9 +7,12 @@ import org.springframework.security.core.userdetails.User;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
         User.UserBuilder userBuilder = User.withDefaultPasswordEncoder();
+
         auth.inMemoryAuthentication()
                 .withUser(userBuilder.username("pavel").password("pavel").roles("EMPLOYEE"))
                 .withUser(userBuilder.username("ulya").password("ulya").roles("HR"))
