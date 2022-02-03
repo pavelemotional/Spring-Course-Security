@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>All employees</title>
     </head>
     <body>
         <h3>Information for all employees</h3>
-        <br><br>
-        <input type="button" value="Salary" onclick="window.location.href = 'hr_info'">
-        Only for HR staff
-        <br><br>
-        <input type="button" value="Performance" onclick="window.location.href = 'manager_info'">
-        Only for Managers
+
+        <div sec:authorize="hasRole('HR')">Text visible to user.
+            <br><br>
+            <input type="button" value="Salary" onclick="window.location.href = 'hr_info'">
+            Only for HR staff
+            <br><br>
+        </div>
+
+        <div sec:authorize="hasRole('MANAGER')">
+            <br><br>
+            <input type="button" value="Performance" onclick="window.location.href = 'manager_info'">
+            Only for Managers
+            <br><br>
+        </div>
 
     </body>
 </html>
